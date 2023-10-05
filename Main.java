@@ -1,6 +1,12 @@
 public class Main{
     public static void main(String[] args){
-        
+        List stack = new StackLL();
+        stack.push(5);
+        stack.push(15);
+        stack.push(25);
+        System.out.println(stack.toString());
+        stack.pop();
+        System.out.println(stack.toString());
     }
 }
 class Node{
@@ -28,7 +34,6 @@ class StackLL extends List{      // For Constant time , we will add and remove f
 
     public StackLL(){
         this.top = null;
-
     }
     public StackLL(int size){
         this.top = null;
@@ -40,6 +45,7 @@ class StackLL extends List{      // For Constant time , we will add and remove f
             Node newNode = new Node(element);
             newNode.next = top;
             top = newNode;
+            size++;
             return true;
         }
         catch(OutOfMemoryError e){
@@ -51,6 +57,7 @@ class StackLL extends List{      // For Constant time , we will add and remove f
         if(top!=null){
         Node temp = top;
         top = top.next;
+        size--;
         return temp;
         }
         else{
@@ -59,7 +66,7 @@ class StackLL extends List{      // For Constant time , we will add and remove f
     }
 
     public boolean isEmpty(){
-        return (top == null)
+        return (top == null);
     }
 
     @Override
